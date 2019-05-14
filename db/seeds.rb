@@ -12,3 +12,7 @@ race3 = Race.create(name: "Chicago Marathon")
 location1 = Location.create(name: "New York, NY")
 location2 = Location.create(name: "Boston, MA")
 location3 = Location.create(name: "Chicago, IL")
+
+race1.locations << location1
+race2.locations << location2
+race3.locations << location3
