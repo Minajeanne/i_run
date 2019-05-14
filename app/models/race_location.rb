@@ -1,0 +1,2 @@
+class RaceLocation < ApplicationRecord
+end
