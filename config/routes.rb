@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :races
   resources :locations
   resources :stats
   devise_for :users, :controllers => { registrations: 'registrations' }
