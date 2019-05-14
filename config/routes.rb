@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :user_prs
-  devise_for :users, :controllers => { registrations: 'registrations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   root to: 'application#home'
 
   resources :races do
@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   resources :stats
   resources :locations
+  resources :user_prs
 end
