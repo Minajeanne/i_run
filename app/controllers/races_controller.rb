@@ -20,9 +20,7 @@ class RacesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @race = Race.new(race_params)
-    #@race = current_user.races.build(race_params)
     @race.users << current_user
     if @race.save
       redirect_to races_path(@race), notice: "Your race was saved!"
