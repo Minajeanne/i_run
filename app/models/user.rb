@@ -6,7 +6,9 @@ class User < ApplicationRecord
   has_many :user_prs
   has_many :stats
   has_many :races, through: :stats
-  
 
-
+  def all_races
+    self.races
+    byebug
+  end
 end
