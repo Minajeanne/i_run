@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   resources :locations
   resources :user_prs
+  resources :stats, only: [:edit, :update]
 end
