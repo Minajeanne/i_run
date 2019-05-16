@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   resources :races do
-    resources :stats
+    resources :stats, only: [:show]
   end
 
-  resources :stats
   resources :locations
   resources :user_prs
 end

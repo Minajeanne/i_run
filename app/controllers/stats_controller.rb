@@ -6,9 +6,11 @@ class StatsController < ApplicationController
   end
 
   def show
-    # show all users races?
+       # binding.pry
     @user = current_user
-    @stats = current_user.stats
+    @race = Race.find(params[:race_id])
+    @stat = @race.current_stat(@user)
+
   end
 
   def new

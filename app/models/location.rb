@@ -1,5 +1,4 @@
 class Location < ApplicationRecord
-  has_many :race_locations
-  has_many :races
+  belongs_to :race
 
 end
