@@ -12,7 +12,7 @@ class UserPrsController < ApplicationController
   end
 
   def new
-    @prs = current_user.user_prs.build
+    @pr = current_user.user_prs.build
   end
 
   def edit

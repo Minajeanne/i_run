@@ -1,1 +1,27 @@
 <h1>Create a New PR!</h1>
+
+<%= form_for pr do |f| %>
+<div class="">
+  <div class="row">
+    <%= f.label :name, "PR Name" %>
+  </div>
+
+  <div class="row">
+      <%= f.text_field :name %>
+  </div>
+
+  <div class="">
+    <div class="row">
+      <%= f.label :description, "Description" %>
+    </div>
+  </div>
+
+  <div class="row">
+      <%= f.text_area :description %>
+  </div>
+
+  <div class="row buttons">
+    <%= f.submit %>
+  </div>
+  <% end %>
+</div>
