@@ -48,7 +48,7 @@ class UserPrsController < ApplicationController
       @pr.destroy
       redirect_to user_prs_path, notice: "Your PR was deleted."
     else
-      redirect_to user_prs_path, notice: "Your are not authorized to delete this PR."
+      redirect_to user_prs_path, notice: "You are not authorized to delete this PR."
     end
   end
 

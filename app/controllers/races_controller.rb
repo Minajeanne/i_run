@@ -43,12 +43,12 @@ class RacesController < ApplicationController
   end
 
   def destroy
-    @pr = current_user.user_prs.find_by(id: params[:id])
-    if @pr.user_id == current_user.id
-      @pr.destroy
-      redirect_to user_prs_path, notice: "Your PR was deleted."
+    @race = current_user.races.find_by(id: params[:id])
+    if @race.user_id == current_user.id
+      @race.destroy
+      redirect_to races_path, notice: "Your race was deleted."
     else
-      redirect_to user_prs_path, notice: "Your are not authorized to delete this PR."
+      redirect_to races_path, notice: "You are not authorized to delete this race."
     end
   end
 
