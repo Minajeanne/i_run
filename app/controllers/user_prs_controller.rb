@@ -16,6 +16,7 @@ class UserPrsController < ApplicationController
   end
 
   def edit
+    @prs = current_user.user_prs
   end
 
   def create
@@ -28,9 +29,24 @@ class UserPrsController < ApplicationController
   end
 
   def update
+    if @pr.user_id == current_user.id
+      @pr.update(user_pr_params)
+      if @pr.save
+        redirect_to user_prs_path(@pr), notice: "Your PR was updated!"
+      else
+        redirect_to edit_user_pr_path
+      end
+    else
+      redirect_to user_prs_path(@pr), alert: "You are not authorized to edit this PR."
+    end
   end
 
   def destroy
+    if @pr.user_id == current_user.id
+      redirect_to user_prs_path, notice: "Your PR was deleted"
+    else
+      redirect_to user_prs_path, notice: "Your are not authorized to delete this PR."
+    end
   end
 
   private
