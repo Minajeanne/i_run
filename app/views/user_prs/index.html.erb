@@ -1,6 +1,4 @@
 <h1><%= current_user.first_name %>'s PRs</h1>
 <% current_user.user_prs.each do |pr| %>
-<li><%= pr.name %> - <%= pr.description %></li>
+<li><%= pr.name %> - <%= pr.description %> > <%= link_to "Edit PR", edit_user_pr_path(pr) %> > <%= link_to "Delete PR", user_pr_path(pr), method: :delete %></li>
 <%end%>
-
-<%# edit prs %>
