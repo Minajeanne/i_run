@@ -33,26 +33,18 @@ class RacesController < ApplicationController
 
   def update
     @race = current_user.races.find_by(id: params[:id])
-    if @race.user_id == current_user.id
-      @race.update(race_params)
+    @race.update(race_params)
       if @race.save
         redirect_to races_path, notice: "Your race was updated!"
       else
         redirect_to edit_race_path, alert: "Your race did not update. Please try again."
       end
-    else
-      redirect_to races_path, alert: "You are not authorized to edit this race."
-    end
   end
 
   def destroy
     @race = current_user.races.find_by(id: params[:id])
-    if @race.user_id == current_user.id
-      @race.destroy
+    @race.destroy
       redirect_to races_path, notice: "Your race was deleted."
-    else
-      redirect_to races_path, notice: "You are not authorized to delete this race."
-    end
   end
 
   private

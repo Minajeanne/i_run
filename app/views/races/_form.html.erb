@@ -20,10 +20,10 @@
 
   <div class="">
     <div class="row">
-      <%= f.fields_for :locations do |location| %>
-        <%= location.label :name, "Location" %>
+      <%= f.fields_for :locations do |l| %>
+        <%= l.label :name, "Location" %>
         <br>
-        <%= location.text_field :name %>
+        <%= l.text_field :name %>
       <% end %>
     </div>
   </div>
