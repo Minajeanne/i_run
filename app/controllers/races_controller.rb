@@ -5,14 +5,15 @@ class RacesController < ApplicationController
     @races = current_user.races
   end
 
-  # def show
-  #   # show all users?
-  #   @user = current_user
-  #   @prs = current_user.user_prs
-  # end
+  def show
+    @user = current_user
+    @races = current_user.races
+  end
 
   def new
-    @race = current_user.races.build
+    @race = Race.new
+    @location = @race.locations.build
+    # binding.pry
   end
 
   def edit
@@ -20,7 +21,9 @@ class RacesController < ApplicationController
   end
 
   def create
-    @race = current_user.races.build(race_params)
+    @race = Race.new(race_params)
+    @race.users << current_user
+    binding.pry
     if @race.save
       redirect_to races_path(@race), notice: "Your race was saved!"
     else
@@ -55,6 +58,6 @@ class RacesController < ApplicationController
   private
 
   def race_params
-    params.require(:race).permit(:name, :distance, :event_date)
+    params.require(:race).permit(:name, :distance, :event_date, locations_attributes: [:name])
   end
 end

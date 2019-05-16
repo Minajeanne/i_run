@@ -20,6 +20,16 @@
 
   <div class="">
     <div class="row">
+      <%= f.fields_for :locations do |location| %>
+        <%= location.label :name, "Location" %>
+        <br>
+        <%= location.text_field :name %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="row">
       <%= f.label :event_date, "Date" %>
     </div>
   </div>
