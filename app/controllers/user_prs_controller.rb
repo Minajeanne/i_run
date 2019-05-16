@@ -19,7 +19,7 @@ class UserPrsController < ApplicationController
   end
 
   def create
-    @pr = UserPr.new(user_pr_params)
+    @pr = current_user.user_prs.build(user_pr_params)
     if @pr.save
       redirect_to user_prs_path(@pr), notice: "Your PR was saved!"
     else
