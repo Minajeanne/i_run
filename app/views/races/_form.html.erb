@@ -1,0 +1,35 @@
+<%= form_for race do |f| %>
+<div class="">
+  <div class="row">
+    <%= f.label :name, "Race Name" %>
+  </div>
+
+  <div class="row">
+      <%= f.text_field :name %>
+  </div>
+
+  <div class="">
+    <div class="row">
+      <%= f.label :distance, "Distance" %>
+    </div>
+  </div>
+
+  <div class="row">
+      <%= f.text_area :distance %>
+  </div>
+
+  <div class="">
+    <div class="row">
+      <%= f.label :event_date, "Date" %>
+    </div>
+  </div>
+
+  <div class="row">
+      <%= f.text_area :event_date %>
+  </div>
+
+  <div class="row buttons">
+    <%= f.submit %>
+  </div>
+  <% end %>
+</div>
