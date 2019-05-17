@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :stats, only: [:show]
   end
 
+  get '/past_races/:id' => 'races#past_races', as: 'past_races'
+
   resources :locations
   resources :user_prs
   resources :stats, only: [:edit, :update]

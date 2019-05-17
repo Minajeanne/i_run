@@ -1,1 +1,5 @@
-<p>Your Past Races</p>
+<h1><%= current_user.first_name %>'s Past Races</h1>
+<% current_user.races.select('id').joins(:stats).where('completion' => true).each do |race| %>
+
+<li><%= race.name %> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Edit Race", edit_race_path(race) %> > <%= link_to "Delete Race", race_path(race), method: :delete %></li>
+<% end %>

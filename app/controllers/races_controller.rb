@@ -8,6 +8,15 @@ class RacesController < ApplicationController
   def show
     @user = current_user
     @races = current_user.races
+    # binding.pry
+    # @stats = current_user.races.stats
+  end
+
+  def past_races
+    @race = current_user.races.find_by(id: params[:id])
+    # binding.pry
+    @race.stats.completion.first = true
+    redirect_to past_races_path
   end
 
   def new
