@@ -1,2 +1,2 @@
 <h1>Congratulations on Completing Your Race!</h1>
-<h2>Clicking the link will move this race to Past Races <%# @stat.completion %> > <%= link_to "I Crushed This Race!", past_races_path(@race) %><br><br>Don't forget to update any new PRs!</h2>
+<h2>Clicking the link will move this race to Past Races <%# @stat.completion %> > <%= link_to "I Crushed This Race!", past_races_path(@race), data: { confirm: "Are you sure?" } %><br><br>Don't forget to update any new PRs!</h2>

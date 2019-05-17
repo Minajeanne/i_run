@@ -18,7 +18,7 @@ class RacesController < ApplicationController
     @race.stats[0].completion = true
     @race.stats[0].save
 
-    render :my_past_races
+    render :my_past_races, notice: "Your race was successfully moved to Past Races!"
   end
 
   def new
