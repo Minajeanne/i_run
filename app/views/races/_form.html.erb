@@ -6,7 +6,7 @@
 
   <div class="row">
       <%= f.text_field :name %>
-      <%= f.collection_select :name, Race.all, :name, :name %>
+      <%= f.collection_select :name, Race.remove_empty_string, :name, :name %>
   </div>
 
   <div class="">
@@ -17,7 +17,7 @@
 
   <div class="row">
       <%= f.text_field :distance %>
-      <%= f.collection_select :distance, Race.all, :distance, :distance %>
+      <%= f.collection_select :distance, Race.remove_empty_string, :distance, :distance %>
   </div>
 
   <div class="">
@@ -28,7 +28,7 @@
 
   <div class="row">
       <%= f.text_field :location %>
-      <%= f.collection_select :location, Race.remove_empty_string, :location, :location %>
+      <%= f.collection_select :location, Race.remove_empty_string, :location, :location, {:include_blank => false}%>
   </div>
 
 

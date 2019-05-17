@@ -14,8 +14,6 @@ class Race < ApplicationRecord
   # end
 
   def self.remove_empty_string
-    # self.reject! { |l| l.empty? }
-    binding.pry
-    self.location
+    self.where("location <> ''") || self.where("name <> ''") || self.where("distance <> ''")
   end
 end
