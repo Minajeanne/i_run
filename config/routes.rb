@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/past_races/:id' => 'races#past_races', as: 'past_races'
+  #get '/past_races' => 'races#', as: 'my_past_races'
 
   resources :locations
   resources :user_prs
