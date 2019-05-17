@@ -23,7 +23,7 @@ class RacesController < ApplicationController
 
   def new
     @race = Race.new
-    @location = @race.locations.build
+    # @location = @race.locations.build
   end
 
   def edit
