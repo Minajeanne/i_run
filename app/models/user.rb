@@ -7,8 +7,7 @@ class User < ApplicationRecord
   has_many :stats
   has_many :races, through: :stats
 
-  def all_races
-    self.races
-    byebug
+  def completion_status
+    self.races.includes(:stats).where('stats.completion = true')
   end
 end

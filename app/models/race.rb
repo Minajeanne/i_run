@@ -8,8 +8,4 @@ class Race < ApplicationRecord
     # binding.pry
     self.stats.where(user: current_user).first
   end
-
-  def completion_status
-    self.current_user.where(completion: true)
-  end
 end

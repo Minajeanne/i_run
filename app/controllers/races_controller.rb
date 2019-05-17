@@ -13,7 +13,7 @@ class RacesController < ApplicationController
   end
 
   def past_races
-    binding.pry
+    # binding.pry
     @race = current_user.races.find_by(id: params[:id])
     @race.stats[0].completion = true
     @race.stats[0].save

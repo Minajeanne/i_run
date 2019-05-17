@@ -1,1 +1,5 @@
-test 
+<h1><%= current_user.first_name %>'s Past Races</h1>
+<% current_user.completion_status.each do |race| %>
+
+<li><%= race.name %> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Delete Race", race_path(race), method: :delete %></li>
+<% end %>
