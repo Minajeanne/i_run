@@ -8,17 +8,17 @@ class RacesController < ApplicationController
   def show
     @user = current_user
     @races = current_user.races
-    # binding.pry
-    # @stats = current_user.races.stats
   end
 
   def past_races
-    # binding.pry
     @race = current_user.races.find_by(id: params[:id])
     @race.stats[0].completion = true
     @race.stats[0].save
 
-    render :my_past_races, notice: "Your race was successfully moved to Past Races!"
+    redirect_to my_past_races_path, notice: "Your race was successfully moved to Past Races!"
+  end
+
+  def my_past_races
   end
 
   def new
