@@ -1,5 +1,5 @@
 <h1><%= current_user.first_name %>'s Past Races</h1>
-<% current_user.completion_status.each do |race| %>
+<% current_user.race_complete.each do |race| %>
 
 <li><%= race.name %> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Delete Race", race_path(race), method: :delete, data: { confirm: "Are you sure you want to delete this race?" }%></li>
 <% end %>

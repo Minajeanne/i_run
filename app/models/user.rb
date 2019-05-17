@@ -7,7 +7,11 @@ class User < ApplicationRecord
   has_many :stats
   has_many :races, through: :stats
 
-  def completion_status
+  def race_complete
     self.races.includes(:stats).where('stats.completion = true')
+  end
+
+  def race_incomplete
+    self.races.includes(:stats).where('stats.completion = false')
   end
 end
