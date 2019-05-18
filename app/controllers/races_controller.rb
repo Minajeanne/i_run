@@ -23,8 +23,6 @@ class RacesController < ApplicationController
 
   def new
     @race = Race.new
-    # binding.pry
-    # @location = @race.locations.build
   end
 
   def edit
