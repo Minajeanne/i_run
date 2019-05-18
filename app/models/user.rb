@@ -14,7 +14,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name  #change first_name/last_name to name in user table
-      user.oauth_token = auth.credentials.token
+      # user.oauth_token = auth.credentials.token
       user.save!
     end
   end
