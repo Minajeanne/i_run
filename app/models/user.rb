@@ -7,7 +7,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
 
-  
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.uid = auth.uid
+      user.provider = auth.provider
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name  #change first_name/last_name to name in user table
+      user.oauth_token = auth.credentials.token
+      user.save!
+    end
+  end
 
   def race_complete
     self.races.includes(:stats).where('stats.completion = true')
