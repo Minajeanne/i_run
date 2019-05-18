@@ -1,12 +1,15 @@
+<div class="container">
 <nav>
-  <ul>
-    <li><%= link_to "Home", root_path %></li>
-      <% if !user_signed_in? %>
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-      <% else %>
-        <li><%= link_to "Edit or Delete Your Account", edit_user_registration_path %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: "DELETE" %></li>
-      <% end %>
-  </ul>
-</nav>
+  <div class="nav-wrapper #4db6ac teal lighten-2">
+    <a href="#" class="brand-logo center">I Run</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><%= link_to "Home", root_path %></li>
+          <% if !user_signed_in? %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+          <% else %>
+            <li><%= link_to "Edit or Delete Your Account", edit_user_registration_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: "DELETE" %></li>
+          <% end %>
+    </ul>
+  </nav>

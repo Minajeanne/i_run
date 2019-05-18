@@ -28,6 +28,7 @@ class User < ApplicationRecord
   end
 
   def first_name
+    # binding.pry
     name.split.first
   end
 
