@@ -1,6 +1,6 @@
 <h1>Welcome to I Run</h1>
 <% if user_signed_in? %>
-<h2>Hello, <%= current_user.first_name%>!</h2>
+<h2>Hello, <%= current_user.name%>!</h2>
 
 <!-- add date? -->
 <p>What do you want to do?</p>
@@ -8,28 +8,28 @@
 <!-- add a PR  -->
 <div class="dashboard row">
   <div class="btn btn-md btn-primary buttons">
-    <%= link_to "Add a PR", new_user_pr_path(current_user) %>
+    <%= link_to "Add a PR", new_user_pr_path %>
   </div>
 </div>
 
 <!-- view PRs  -->
 <div class="dashboard row">
   <div class="btn btn-md btn-primary buttons">
-    <%= link_to "View Your PRs", user_prs_path(current_user) %>
+    <%= link_to "View Your PRs", user_prs_path %>
   </div>
 </div>
 
 <!-- view upcoming races  -->
 <div class="dashboard row">
   <div class="btn btn-md btn-primary buttons">
-    <%= link_to "View Upcoming Races", races_path(current_user) %>
+    <%= link_to "View Upcoming Races", races_path %>
   </div>
 </div>
 
 <!-- add an upcoming race  -->
 <div class=" row">
   <div class="btn btn-md btn-primary buttons">
-    <%= link_to "Add an Upcoming Race", new_race_path(current_user) %>
+    <%= link_to "Add an Upcoming Race", new_race_path %>
   </div>
 </div>
 
