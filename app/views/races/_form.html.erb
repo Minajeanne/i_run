@@ -6,7 +6,7 @@
 
   <div class="row">
       <%= f.text_field :name %>
-      <%= f.collection_select :name, Race.remove_empty_string.order(:name), :name, :name, include_blank: true %>
+      <%# f.collection_select :name, Race.remove_empty_string.order(:name), :name, :name, include_blank: true %>
   </div>
 
   <div class="">
@@ -17,7 +17,7 @@
 
   <div class="row">
       <%= f.text_field :distance %>
-      <%= f.collection_select :distance, Race.remove_empty_string.order(:distance), :distance, :distance, include_blank: true %>
+      <%# f.collection_select :distance, Race.remove_empty_string.order(:distance), :distance, :distance, include_blank: true %>
   </div>
 
   <div class="">
@@ -28,7 +28,7 @@
 
   <div class="row">
       <%= f.text_field :location %>
-      <%= f.collection_select :location, Race.remove_empty_string.order(:location), :location, :location, include_blank: true %>
+      <%# f.collection_select :location, Race.remove_empty_string.order(:location), :location, :location, include_blank: true %>
   </div>
 
 
@@ -37,9 +37,9 @@
       <%= f.label :event_date, "Date" %>
     </div>
   </div>
-<!-- <input type="text" class="datepicker"> -->
+
   <div class="row">
-      <%= f.text_field :event_date %>
+      <%= f.date_field :event_date %>
   </div>
 
   <div class="row buttons">
