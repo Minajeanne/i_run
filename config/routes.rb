@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/past_races/:id' => 'races#past_races', as: 'past_races'
   get '/my_past_races' => 'races#my_past_races', as: 'my_past_races'
 
-  resources :locations
+  # resources :locations
   resources :user_prs
   resources :stats, only: [:edit, :update]
 end
