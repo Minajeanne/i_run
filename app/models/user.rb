@@ -26,4 +26,12 @@ class User < ApplicationRecord
   def race_incomplete
     self.races.includes(:stats).where('stats.completion = false')
   end
+
+  def first_name
+   name.split.first
+  end
+
+  def last_name
+   name.split.last
+  end
 end
