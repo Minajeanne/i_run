@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(version: 2019_05_18_134151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "locations", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t| #delete
     t.integer "race_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
   end
 
-  create_table "race_locations", force: :cascade do |t|
+  create_table "race_locations", force: :cascade do |t| #delete
     t.integer "race_id"
     t.integer "location_id"
     t.datetime "created_at", null: false

@@ -22,7 +22,8 @@ class RacesController < ApplicationController
   end
 
   def new
-    @race = Race.new
+    @race = current_user.races.build
+    # @race = Race.new
   end
 
   def edit
@@ -30,12 +31,14 @@ class RacesController < ApplicationController
   end
 
   def create
-    @race = Race.new(race_params)
-    @race.users << current_user
+    @race = current_user.races.build(race_params)
     if @race.save
-      redirect_to races_path(@race), notice: "Your race was saved!"
+      @race.users << current_user
+      binding.pry
+      redirect_to races_path, notice: "Your race was saved!"
     else
-      redirect_to new_race_path, alert: "Your race did not save. Please try again."
+      flash[:alert] = "Your race did not save. Please try again."
+      render :new
     end
   end
 
