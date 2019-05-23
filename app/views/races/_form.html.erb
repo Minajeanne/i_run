@@ -1,45 +1,45 @@
 <%= form_for race do |f| %>
 <div class="">
   <div class="row">
-    <%= f.label :name, "Race Name" %>
+    <%# f.label :name, "Race Name" %>
   </div>
 
   <div class="row">
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :class => "new-race", :placeholder => (race.errors.full_messages_for(:name).first || "Enter a new race name")%>
       <%# f.collection_select :name, Race.remove_empty_string.order(:name), :name, :name, include_blank: true %>
   </div>
 
   <div class="">
     <div class="row">
-      <%= f.label :distance, "Distance" %>
+      <%# f.label :distance, "Distance" %>
     </div>
   </div>
 
   <div class="row">
-      <%= f.text_field :distance %>
+      <%= f.text_field :distance, :class => "new-race", :placeholder => (race.errors.full_messages_for(:distance).first || "Enter the distance") %>
       <%# f.collection_select :distance, Race.remove_empty_string.order(:distance), :distance, :distance, include_blank: true %>
   </div>
 
   <div class="">
     <div class="row">
-      <%= f.label :location, "Location" %>
+      <%# f.label :location, "Location" %>
     </div>
   </div>
 
   <div class="row">
-      <%= f.text_field :location %>
+      <%= f.text_field :location, :class => "new-race", :placeholder => (race.errors.full_messages_for(:location).first || "Enter the location") %>
       <%# f.collection_select :location, Race.remove_empty_string.order(:location), :location, :location, include_blank: true %>
   </div>
 
 
   <div class="">
     <div class="row">
-      <%= f.label :event_date, "Date" %>
+      <%# f.label :event_date, "Date" %>
     </div>
   </div>
 
   <div class="row">
-      <%= f.date_field :event_date %>
+      <%= f.date_field :event_date, :class => "new-race", :placeholder => (race.errors.full_messages_for(:event_date).first) %>
   </div>
 
   <div class="row buttons">
