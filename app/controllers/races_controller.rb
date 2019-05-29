@@ -34,7 +34,7 @@ class RacesController < ApplicationController
     @race = current_user.races.build(race_params)
     if @race.save
       @race.users << current_user
-      binding.pry
+      # binding.pry
       redirect_to races_path, notice: "Your race was saved!"
     else
       flash[:alert] = "Your race did not save. Please try again."
