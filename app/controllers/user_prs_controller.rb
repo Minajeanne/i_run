@@ -11,7 +11,7 @@ class UserPrsController < ApplicationController
 
   def show
     @user = current_user
-    @pr = current_user.user_prs.find(params["id"])
+    @pr = current_user.user_prs.find_by(id: params[:id])
     respond_to do |f|
       f.html {render :show}
       f.json {render json: @pr}

@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 gem 'materialize-sass'
 # Reduces boot times through caching; required in config/boot.rb
