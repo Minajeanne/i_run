@@ -14,3 +14,9 @@ UserPr.prototype.postHTML = function () {
     </div>
   `)
 };
+
+// UserPr.prototype.newPrForm = function () {
+//   return (`
+//
+//   `)
+// };
