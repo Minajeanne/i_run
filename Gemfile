@@ -20,6 +20,7 @@ gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'active_model_serializers'
+gem 'rack-cors'
 
 gem 'materialize-sass'
 # Reduces boot times through caching; required in config/boot.rb
