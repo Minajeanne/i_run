@@ -9,11 +9,14 @@ class UserPrsController < ApplicationController
     end
   end
 
-  # def show
-  #   # show all users?
-  #   @user = current_user
-  #   @prs = current_user.user_prs
-  # end
+  def show
+    @user = current_user
+    @prs = current_user.user_prs.find(params["id"])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @prs}
+    end
+  end
 
   def new
     @pr = current_user.user_prs.build
