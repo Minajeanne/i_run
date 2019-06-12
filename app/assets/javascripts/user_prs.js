@@ -1,3 +1,8 @@
+$(function () {
+  console.log('user_prs.js is loaded ...')
+  listenForClick()
+});
+
 function listenForClick() {
   $('button#prs-data').on('click', function (event) {
     event.preventDefault()
