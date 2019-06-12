@@ -1,3 +1,6 @@
+// $(document).on('ready page:load',
+//   function () {
+
 $(function () {
   console.log('user_prs.js is loaded ...')
   listenForClick()
@@ -47,3 +50,5 @@ UserPr.prototype.prHTML = function () {
 // min 26
 //   `)
 // };
+
+// });
