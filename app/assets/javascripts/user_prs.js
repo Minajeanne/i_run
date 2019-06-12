@@ -1,3 +1,25 @@
+function listenForClick() {
+  $('button#prs-data').on('click', function (event) {
+    event.preventDefault()
+    getPrs();
+  })
+}
+
+function getPrs() {
+  $.ajax({
+    url: 'https://localhost:3000/user_prs',
+    method: 'get',
+    dataType: 'json'
+  }).done(function (data) {
+    console.log("the data is: ", data)
+
+    let mypr = new UserPr(data[0])
+    let myPrHTML = mypr.prHTML()
+// complete **********
+    document.getElementById('X').innerHTML += myPrHTML
+  })
+}
+
 class UserPr {
   constructor(obj) {
     this.id = obj.id
@@ -6,7 +28,7 @@ class UserPr {
   }
 }
 
-UserPr.prototype.postHTML = function () {
+UserPr.prototype.prHTML = function () {
   return (`
     <div>
       <h2>$(this.name)</h2>
