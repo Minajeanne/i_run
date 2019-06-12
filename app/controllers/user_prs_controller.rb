@@ -11,10 +11,10 @@ class UserPrsController < ApplicationController
 
   def show
     @user = current_user
-    @prs = current_user.user_prs.find(params["id"])
+    @pr = current_user.user_prs.find(params["id"])
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @prs}
+      f.json {render json: @pr}
     end
   end
 
@@ -29,7 +29,9 @@ class UserPrsController < ApplicationController
   def create
     @pr = current_user.user_prs.build(user_pr_params)
     if @pr.save
-      redirect_to user_prs_path, notice: "Your PR was saved!"
+      respond_to do |f|
+        f.html {redirect_to user_prs_path, notice: "Your PR was saved!"}
+        f.json {render json: @prs}
     else
       redirect_to new_user_pr_path, alert: "Your PR did not save. Please try again."
     end
