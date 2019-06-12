@@ -3,6 +3,10 @@ class UserPrsController < ApplicationController
   def index
     @user = current_user
     @prs = current_user.user_prs
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @prs}
+    end
   end
 
   # def show
