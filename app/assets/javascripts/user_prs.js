@@ -5,3 +5,12 @@ class UserPr {
     this.description = obj.description
   }
 }
+
+UserPr.prototype.postHTML = function () {
+  return (`
+    <div>
+      <h2>$(this.name)</h2>
+      <p>$(this.description)</p>
+    </div>
+  `)
+};
