@@ -31,6 +31,7 @@ class UserPrsController < ApplicationController
   end
 
   def create
+    binding.pry
     @pr = current_user.user_prs.build(user_pr_params)
     if @pr.save
       respond_to do |f|

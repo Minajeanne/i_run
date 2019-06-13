@@ -1,10 +1,8 @@
-// $(document).on('ready page:load',
-//   function () {
-
 $(function () {
   console.log('user_prs.js is loaded ...')
   listenForClick()
   listenForNewPrClick()
+  listenForNewPrFormClick()
 });
 
 function listenForClick() {
@@ -34,8 +32,39 @@ function listenForNewPrClick() {
     event.preventDefault()
     let newPrForm = UserPr.newPrForm()
     document.querySelector('div#new-pr-form').innerHTML = newPrForm
+    listenForNewPrFormClick()
   })
 }
+
+function listenForNewPrFormClick() {
+  $('#new-pr-form').submit(function(e) {
+    e.preventDefault()
+
+    const pr = {
+      name: $('#name').val(),
+      description: $('#description').val()
+  };
+
+    $.ajax({
+      url: 'https://localhost:3000/user_prs',
+      method: 'POST',
+      data: JSON.stringify(pr),
+      success: function(newPr) {
+        $pr.append('<li>name: '+ newPr.name +', description: '+ newPr.description + '</li>');
+      },
+      error: function() {
+        alert('error saving PR');
+      }
+    })
+  })
+}
+jQuery.ajax ({ 
+  url: myurl, 
+  type: "POST", 
+  data: JSON.stringify({data:"test"}), 
+  dataType: "json", 
+  contentType: "application/json; charset=utf-8", 
+  success: function(){ 
 
 class UserPr {
   constructor(obj) {
@@ -46,10 +75,9 @@ class UserPr {
 
   static newPrForm() {
     return (`
-      <strong>Add a New PR</strong>
-      <form>
-        <input id='pr-name' type='text' name='name'></input><br>
-        <input type='text' name='description'></input><br>
+      <form id="new-pr-form">
+        <input id='name' type='text' name='name' placeholder="PR Name"></input><br>
+        <input id='description' type='text' name='description' placeholder="Description"></input><br>
         <input type ='submit'/>
       </form>
     `)
@@ -75,3 +103,12 @@ UserPr.prototype.prHTML = function () {
 //     </form>
 //   `)
 // };
+//     } });
+
+jQuery.ajax ({ 
+  url: myurl, 
+  type: "POST", 
+  data: JSON.stringify({data:"test"}), 
+  dataType: "json", 
+  contentType: "application/json; charset=utf-8", 
+  success: function(){ 
