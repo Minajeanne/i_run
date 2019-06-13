@@ -24,7 +24,7 @@ function getPrs() {
     let mypr = new UserPr(data[0])
     let myPrHTML = mypr.prHTML()
 // complete **********
-    document.getElementById('X').innerHTML += myPrHTML
+    document.getElementById('new-pr-form').innerHTML += myPrHTML
   })
 }
 
@@ -45,10 +45,12 @@ UserPr.prototype.prHTML = function () {
   `)
 };
 
-// UserPr.prototype.newPrForm = function () {
-//   return (`
-// min 26
-//   `)
-// };
-
-// });
+UserPr.prototype.newPrForm = function () {
+  return (`
+    <strong>Add a New PR</strong>
+    <form>
+      <input id='pr-name' type='text' name='name'></input><br>
+      <input type='textarea' name='description'></input><br>
+      <input type ='submit'/>
+  `)
+};

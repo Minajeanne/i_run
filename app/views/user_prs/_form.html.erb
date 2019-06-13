@@ -1,11 +1,11 @@
 <%= form_for pr do |f| %>
-<div class="">
-  <div class="row">
+<div id="new-pr-form">
+  <div class="">
     <%# f.label :name, "PR" %>
   </div>
 
-  <div class="row">
-      <%= f.text_field :name, :class => "new-pr", :placeholder => (pr.errors.full_messages_for(:name).first || "Enter your PR") %>
+  <div class="user-prs">
+      <%= f.text_field :name, :class => "new-user-pr-name", :placeholder => (pr.errors.full_messages_for(:name).first || "Enter your PR") %>
   </div>
 
   <div class="">
@@ -14,8 +14,8 @@
     </div>
   </div>
 
-  <div class="row">
-      <%= f.text_area :description, :class => "new-pr", :placeholder => "Brag about your PR here! Ex. Where/when did this happen? Did anyone else see it happen? Can you still walk?" %>
+  <div class="user-prs">
+      <%= f.text_area :description, :class => "new-user-pr-description", :placeholder => "Brag about your PR here! Ex. Where/when did this happen? Did anyone else see it happen? Can you still walk?" %>
   </div>
 
   <div class="row buttons">
@@ -23,3 +23,4 @@
   </div>
   <% end %>
 </div>
+<div id="new-pr-form">[new pr]</div>
