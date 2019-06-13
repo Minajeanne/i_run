@@ -4,6 +4,7 @@
 $(function () {
   console.log('user_prs.js is loaded ...')
   listenForClick()
+  listenForNewPrClick()
 });
 
 function listenForClick() {
