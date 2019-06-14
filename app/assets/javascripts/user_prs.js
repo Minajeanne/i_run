@@ -27,38 +27,54 @@ function getPrs() {
 }
 
 function listenForNewPrClick() {
-  $('button#new-pr').on('click', function (event) {
-    event.preventDefault()
+  $('button#new-pr').on('click', function (e) {
+    e.preventDefault()
     let newPrForm = UserPr.newPrForm()
-    document.querySelector('div#new-pr-form').innerHTML = newPrForm
+    document.querySelector('div#pr-form').innerHTML = newPrForm
     listenForNewPrFormClick()
   })
 }
 
 function listenForNewPrFormClick() {
-  $('form#new-pr-form').submit(function(e) {
-    e.preventDefault()
+    $('#new-pr-form').submit(function(e) {
+      //prevent form from submitting the default way
+      e.preventDefault();
 
-    const pr = {
-      name: $('#name').val(),
-      description: $('#description').val()
+      let values = $(this).serialize();
+      // let packet = {user_pr: values};
+      let posting = $.post('/user_prs', values);
+
+      posting.done(function(data) {
+        // TODO: handle response
+        debugger
+        console.log(data);
+      });
+    });
   };
-
-    $.ajax({
-      url: 'https://localhost:3000/user_prs',
-      method: 'POST',
-      data: JSON.stringify(pr),
-      dataType: 'json',
-      contentType: "application/json; charset=utf-8", 
-      success: function(newPr) {
-        $pr.append('<li>name: '+ newPr.name +', description: '+ newPr.description + '</li>');
-      },
-      error: function() {
-        alert('error saving PR');
-      }
-    })
-  })
-}
+// function listenForNewPrFormClick() {
+//   $('#new-pr-form').submit(function(e) {
+//     e.preventDefault()
+//
+//     const pr = {
+//       name: $('#name').val(),
+//       description: $('#description').val()
+//   };
+//
+//     $.ajax({
+//       url: 'https://localhost:3000/user_prs',
+//       method: 'POST',
+//       data: JSON.stringify(pr),
+//       dataType: 'json',
+//       contentType: "application/json; charset=utf-8", 
+//       success: function(newPr) {
+//         $pr.append('<li>name: '+ newPr.name +', description: '+ newPr.description + '</li>');
+//       },
+//       error: function() {
+//         alert('error saving PR');
+//       }
+//     })
+//   })
+// }
 
 class UserPr {
   constructor(obj) {
@@ -70,8 +86,8 @@ class UserPr {
   static newPrForm() {
     return (`
       <form id="new-pr-form">
-        <input id='name' type='text' name='name' placeholder="PR Name"></input><br>
-        <input id='description' type='text' name='description' placeholder="Description"></input><br>
+        <input id='name' type='text' name='user_pr[name]' placeholder="PR Name"></input><br>
+        <input id='description' type='text' name='user_pr[description]' placeholder="Description"></input><br>
         <input type ='submit'/>
       </form>
     `)

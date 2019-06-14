@@ -34,10 +34,11 @@ class UserPrsController < ApplicationController
   def create
     binding.pry
     @pr = current_user.user_prs.build(user_pr_params)
+    # binding.pry
     if @pr.save
       respond_to do |f|
         f.html {redirect_to user_prs_path, notice: "Your PR was saved!"}
-        f.json {render json: @prs, status: 201}
+        f.json {render json: @pr, status: 201}
       end
     else
       redirect_to new_user_pr_path, alert: "Your PR did not save. Please try again."
