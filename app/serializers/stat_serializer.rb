@@ -1,3 +1,6 @@
 class StatSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :completion
+
+  belongs_to :user
+  belongs_to :race
 end
