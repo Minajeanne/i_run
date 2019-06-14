@@ -21,42 +21,17 @@ function listenForViewPrsClick() {
       method: 'GET',
       dataType: 'json',
     }).done(function (data) {
+        data.forEach(pr => {
+          const myPrs = `
+          <p>${data.name} - ${data.description}</p>
+          `
+          $('#view-prs-div').html(myPrs);
+        })
+        // console.log("the data is: ", data)
         debugger
-        console.log("the data is: ", data)
-        // $pr.append('<li>name: '+ Prs.name +', description: '+ Prs.description + '</li>');
       })
     })
   }
-
-
-// function getPrs() {
-//   $('button#view-prs').on('click', function (e) {
-//     e.preventDefault()
-//     let id = $(this).data("id");
-//     debugger
-//     // change the URL to the new route
-//     $.get("/user_prs/" + id + "/user_prs_data", function(data) {
-//       // Replace text of body-id div
-//       $("#body-" + id).text(data);
-//     });
-//   });
-// };
-
-// function getPrs() {
-//   $.ajax({
-//     url: 'https://localhost:3000/user_prs',
-//     method: 'get',
-//     dataType: 'json'
-//   }).done(function (data) {
-//     debugger
-//     console.log("the data is: ", data)
-//
-//     let mypr = new UserPr(data[0])
-//     let myPrHTML = mypr.prHTML()
-// // complete **********
-//     document.getElementById('#view-prs-div').innerHTML += myPrHTML
-//   })
-// }
 
 function listenForNewPrClick() {
   $('button#new-pr').on('click', function (e) {
