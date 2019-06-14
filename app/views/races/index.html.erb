@@ -1,5 +1,5 @@
 <h1><%= current_user.first_name %>'s Races</h1>
   <% current_user.race_incomplete.each do |race| %>
 
-  <li><%= race.name %> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Edit Race", edit_race_path(race) %> > <%= link_to "Delete Race", race_path(race), method: :delete, data: { confirm: "Are you sure you want to delete this race?" } %> > <%= link_to "Mark Race Complete", race_stat_path(race, race.current_stat(current_user)) %></li>
+  <li><%= link_to race.name %> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Edit Race", edit_race_path(race) %> > <%= link_to "Delete Race", race_path(race), method: :delete, data: { confirm: "Are you sure you want to delete this race?" } %> > <%= link_to "Mark Race Complete", race_stat_path(race, race.current_stat(current_user)) %></li>
   <% end %>
