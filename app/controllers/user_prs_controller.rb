@@ -1,4 +1,5 @@
 class UserPrsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @user = current_user
@@ -14,7 +15,7 @@ class UserPrsController < ApplicationController
     @pr = current_user.user_prs.find_by(id: params[:id])
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @pr}
+      f.json {render json: @pr, status: 201}
     end
   end
 
@@ -36,7 +37,7 @@ class UserPrsController < ApplicationController
     if @pr.save
       respond_to do |f|
         f.html {redirect_to user_prs_path, notice: "Your PR was saved!"}
-        f.json {render json: @prs}
+        f.json {render json: @prs, status: 201}
       end
     else
       redirect_to new_user_pr_path, alert: "Your PR did not save. Please try again."

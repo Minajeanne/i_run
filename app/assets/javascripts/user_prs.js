@@ -3,7 +3,6 @@ $(function () {
   listenForClick()
   listenForNewPrClick()
   listenForNewPrFormClick()
-});
 
 function listenForClick() {
   $('button#prs-data').on('click', function (event) {
@@ -37,7 +36,7 @@ function listenForNewPrClick() {
 }
 
 function listenForNewPrFormClick() {
-  $('#new-pr-form').submit(function(e) {
+  $('form#new-pr-form').submit(function(e) {
     e.preventDefault()
 
     const pr = {
@@ -49,6 +48,8 @@ function listenForNewPrFormClick() {
       url: 'https://localhost:3000/user_prs',
       method: 'POST',
       data: JSON.stringify(pr),
+      dataType: 'json',
+      contentType: "application/json; charset=utf-8", 
       success: function(newPr) {
         $pr.append('<li>name: '+ newPr.name +', description: '+ newPr.description + '</li>');
       },
@@ -58,13 +59,6 @@ function listenForNewPrFormClick() {
     })
   })
 }
-jQuery.ajax ({ 
-  url: myurl, 
-  type: "POST", 
-  data: JSON.stringify({data:"test"}), 
-  dataType: "json", 
-  contentType: "application/json; charset=utf-8", 
-  success: function(){ 
 
 class UserPr {
   constructor(obj) {
@@ -92,23 +86,4 @@ UserPr.prototype.prHTML = function () {
     </div>
   `)
 };
-
-// UserPr.prototype.newPrForm = function () {
-//   return (`
-//     <strong>Add a New PR</strong>
-//     <form>
-//       <input id='pr-name' type='text' name='name'></input><br>
-//       <input type='textarea' name='description'></input><br>
-//       <input type ='submit'/>
-//     </form>
-//   `)
-// };
-//     } });
-
-jQuery.ajax ({ 
-  url: myurl, 
-  type: "POST", 
-  data: JSON.stringify({data:"test"}), 
-  dataType: "json", 
-  contentType: "application/json; charset=utf-8", 
-  success: function(){ 
+});
