@@ -41,7 +41,7 @@ function listenForNewPrFormClick() {
       e.preventDefault();
 
       let values = $(this).serialize();
-      // let packet = {user_pr: values};
+      
       let posting = $.post('/user_prs', values);
 
       posting.done(function(data) {
