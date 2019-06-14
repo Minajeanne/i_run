@@ -15,20 +15,20 @@ function listenForClick() {
 function listenForViewPrsClick() {
   $('#view-prs').on('click', function(e) {
     e.preventDefault()
-// debugger hits
+
     $.ajax({
       url: 'http://localhost:3000/user_prs',
       method: 'GET',
       dataType: 'json',
     }).done(function (data) {
+        let myPrs = ""
+
         data.forEach(pr => {
-          const myPrs = `
+          myPrs += `
           <p>${pr.name} - ${pr.description}</p>
           `
           $('#view-prs-div').html(myPrs);
         })
-        // console.log("the data is: ", data)
-        debugger
       })
     })
   }
