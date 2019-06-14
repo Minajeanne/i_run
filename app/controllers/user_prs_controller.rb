@@ -32,9 +32,7 @@ class UserPrsController < ApplicationController
   end
 
   def create
-    binding.pry
     @pr = current_user.user_prs.build(user_pr_params)
-    # binding.pry
     if @pr.save
       respond_to do |f|
         f.html {redirect_to user_prs_path, notice: "Your PR was saved!"}

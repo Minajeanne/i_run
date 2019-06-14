@@ -41,13 +41,15 @@ function listenForNewPrFormClick() {
       e.preventDefault();
 
       let values = $(this).serialize();
-      
-      let posting = $.post('/user_prs', values);
+
+      let posting = $.post('/user_prs.json', values);
 
       posting.done(function(data) {
         // TODO: handle response
+        // document.querySelector('#new-pr-div').innerHTML = data
         debugger
-        console.log(data);
+        myDiv = `<p>${data.name} > ${data.description}</p>`
+        $('#new-pr-div').html(myDiv);
       });
     });
   };
