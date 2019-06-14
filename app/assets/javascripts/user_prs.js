@@ -48,7 +48,7 @@ function listenForNewPrFormClick() {
         // TODO: handle response
         // document.querySelector('#new-pr-div').innerHTML = data
         debugger
-        myDiv = `<p>${data.name} > ${data.description}</p>`
+        myDiv = `<p>${data.name} - ${data.description}</p>`
         $('#new-pr-div').html(myDiv);
       });
     });
