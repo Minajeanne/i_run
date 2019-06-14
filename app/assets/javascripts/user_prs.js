@@ -1,4 +1,4 @@
-// Add second click functionality to hide NEW PR and PRS 
+// Add second click functionality to hide NEW PR and PRS
 
 $(function () {
   console.log('user_prs.js is loaded ...')
@@ -7,12 +7,12 @@ $(function () {
   listenForNewPrFormClick()
   listenForViewPrsClick()
 
-function listenForClick() {
-  $('button#view-prs').on('click', function (e) {
-    e.preventDefault()
-    getPrs();
-  })
-}
+// function listenForClick() {
+//   $('button#view-prs').on('click', function (e) {
+//     e.preventDefault()
+//     getPrs();
+//   })
+// }
 
 function listenForViewPrsClick() {
   $('#view-prs').on('click', function(e) {
@@ -38,7 +38,9 @@ function listenForViewPrsClick() {
 function listenForNewPrClick() {
   $('button#new-pr').on('click', function (e) {
     e.preventDefault()
+
     let newPrForm = UserPr.newPrForm()
+
     document.querySelector('div#pr-form').innerHTML = newPrForm
     listenForNewPrFormClick()
   })
