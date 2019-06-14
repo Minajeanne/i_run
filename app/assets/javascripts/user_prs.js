@@ -1,8 +1,9 @@
 $(function () {
   console.log('user_prs.js is loaded ...')
-  listenForClick()
+  // listenForClick()
   listenForNewPrClick()
   listenForNewPrFormClick()
+  listenForViewPrsClick()
 
 function listenForClick() {
   $('button#view-prs').on('click', function (e) {
@@ -11,21 +12,51 @@ function listenForClick() {
   })
 }
 
-function getPrs() {
-  $.ajax({
-    url: 'https://localhost:3000/user_prs',
-    method: 'get',
-    dataType: 'json'
-  }).done(function (data) {
-    debugger
-    console.log("the data is: ", data)
+function listenForViewPrsClick() {
+  $('#view-prs').on('click', function(e) {
+    e.preventDefault()
+// debugger hits
+    $.ajax({
+      url: 'http://localhost:3000/user_prs',
+      method: 'GET',
+      dataType: 'json',
+    }).done(function (data) {
+        debugger
+        console.log("the data is: ", data)
+        // $pr.append('<li>name: '+ Prs.name +', description: '+ Prs.description + '</li>');
+      })
+    })
+  }
 
-    let mypr = new UserPr(data[0])
-    let myPrHTML = mypr.prHTML()
-// complete **********
-    document.getElementById('#view-prs-div').innerHTML += myPrHTML
-  })
-}
+
+// function getPrs() {
+//   $('button#view-prs').on('click', function (e) {
+//     e.preventDefault()
+//     let id = $(this).data("id");
+//     debugger
+//     // change the URL to the new route
+//     $.get("/user_prs/" + id + "/user_prs_data", function(data) {
+//       // Replace text of body-id div
+//       $("#body-" + id).text(data);
+//     });
+//   });
+// };
+
+// function getPrs() {
+//   $.ajax({
+//     url: 'https://localhost:3000/user_prs',
+//     method: 'get',
+//     dataType: 'json'
+//   }).done(function (data) {
+//     debugger
+//     console.log("the data is: ", data)
+//
+//     let mypr = new UserPr(data[0])
+//     let myPrHTML = mypr.prHTML()
+// // complete **********
+//     document.getElementById('#view-prs-div').innerHTML += myPrHTML
+//   })
+// }
 
 function listenForNewPrClick() {
   $('button#new-pr').on('click', function (e) {
@@ -47,37 +78,11 @@ function listenForNewPrFormClick() {
 
       posting.done(function(data) {
         // TODO: handle response
-        // document.querySelector('#new-pr-div').innerHTML = data
-        debugger
         myDiv = `<p>${data.name} - ${data.description}</p>`
         $('#new-pr-div').html(myDiv);
       });
     });
   };
-// function listenForNewPrFormClick() {
-//   $('#new-pr-form').submit(function(e) {
-//     e.preventDefault()
-//
-//     const pr = {
-//       name: $('#name').val(),
-//       description: $('#description').val()
-//   };
-//
-//     $.ajax({
-//       url: 'https://localhost:3000/user_prs',
-//       method: 'POST',
-//       data: JSON.stringify(pr),
-//       dataType: 'json',
-//       contentType: "application/json; charset=utf-8", 
-//       success: function(newPr) {
-//         $pr.append('<li>name: '+ newPr.name +', description: '+ newPr.description + '</li>');
-//       },
-//       error: function() {
-//         alert('error saving PR');
-//       }
-//     })
-//   })
-// }
 
 class UserPr {
   constructor(obj) {
