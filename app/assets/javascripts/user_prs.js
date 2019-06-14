@@ -1,3 +1,5 @@
+// Add second click functionality to hide NEW PR and PRS 
+
 $(function () {
   console.log('user_prs.js is loaded ...')
   // listenForClick()
@@ -85,4 +87,5 @@ UserPr.prototype.prHTML = function () {
     </div>
   `)
 };
+
 });
