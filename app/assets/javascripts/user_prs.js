@@ -23,7 +23,7 @@ function listenForViewPrsClick() {
     }).done(function (data) {
         data.forEach(pr => {
           const myPrs = `
-          <p>${data.name} - ${data.description}</p>
+          <p>${pr.name} - ${pr.description}</p>
           `
           $('#view-prs-div').html(myPrs);
         })
