@@ -6,7 +6,7 @@ class UserPrsController < ApplicationController
     @prs = current_user.user_prs
     respond_to do |f|
       f.html {render :index}
-      f.json {render json: @prs}
+      f.json {render json: @prs, status: 201}
     end
   end
 
@@ -27,7 +27,7 @@ class UserPrsController < ApplicationController
     @pr = current_user.user_prs.find_by(id: params[:id])
     respond_to do |f|
       f.html {render :edit}
-      f.json {render json: @pr}
+      f.json {render json: @pr, status: 201}
     end
   end
 

@@ -13,10 +13,10 @@
 
 <!-- add date? -->
 <p>What do you want to do?</p>
-      <!-- add a PR  -->
-      <button id="new-pr" type="button" name="button" value="add-pr">ADD NEW PR</button>
 
+      <!-- add a PR  -->
   <div id="new-pr-div" class="">
+    <button id="new-pr" type="button" name="button" value="add-pr">ADD NEW PR</button>
       <div id="pr-form"></div>
       <!-- <div class="dashboard row">
         <div class="btn btn-md btn-primary buttons">
@@ -26,9 +26,11 @@
   </div>
 <!-- view PRs  -->
 <div class="dashboard row">
-  <div class="btn btn-md btn-primary buttons">
-    <%= link_to "View Your PRs", user_prs_path %>
-  </div>
+  <button id="view-prs" type="button" name="button" value="view-prs">VIEW PRs</button>
+    <div id="view-prs-div" class=""></div>
+  <!-- <div class="btn btn-md btn-primary buttons">
+    <%# link_to "View Your PRs", user_prs_path %>
+  </div> -->
 </div>
 
 <!-- view upcoming races  -->

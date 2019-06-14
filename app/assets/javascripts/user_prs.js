@@ -5,8 +5,8 @@ $(function () {
   listenForNewPrFormClick()
 
 function listenForClick() {
-  $('button#prs-data').on('click', function (event) {
-    event.preventDefault()
+  $('button#view-prs').on('click', function (e) {
+    e.preventDefault()
     getPrs();
   })
 }
@@ -17,12 +17,13 @@ function getPrs() {
     method: 'get',
     dataType: 'json'
   }).done(function (data) {
+    debugger
     console.log("the data is: ", data)
 
     let mypr = new UserPr(data[0])
     let myPrHTML = mypr.prHTML()
 // complete **********
-    document.getElementById('').innerHTML += myPrHTML
+    document.getElementById('#view-prs-div').innerHTML += myPrHTML
   })
 }
 
