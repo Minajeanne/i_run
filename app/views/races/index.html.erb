@@ -4,5 +4,7 @@
 
   <% current_user.race_incomplete.each do |race| %>
 
-  <li><strong><%= link_to race.name, races_path(race) %></strong> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Edit Race", edit_race_path(race) %> > <%= link_to "Delete Race", race_path(race), method: :delete, data: { confirm: "Are you sure you want to delete this race?" } %> > <%= link_to "Mark Race Complete", race_stat_path(race, race.current_stat(current_user)) %></li>
+<div id="view-race-users-div">
+  <li><strong><button id="view-race-users" type="button" name="button"><%=race.name%></button><%# link_to race.name, races_path(race) %></strong> - <%= race.distance %> - <%= race.location %> - <%= race.event_date %> > <%= link_to "Edit Race", edit_race_path(race) %> > <%= link_to "Delete Race", race_path(race), method: :delete, data: { confirm: "Are you sure you want to delete this race?" } %> > <%= link_to "Mark Race Complete", race_stat_path(race, race.current_stat(current_user)) %></li>
   <% end %>
+</div>
