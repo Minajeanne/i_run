@@ -13,7 +13,6 @@ function listenForNewRaceClick() {
     let newRaceForm = Race.newRaceForm()
 
     document.querySelector('div#new-race-form').innerHTML = newRaceForm
-    // debugger
     listenForNewRaceFormClick()
   })
 }
@@ -26,7 +25,7 @@ function listenForNewRaceFormClick() {
       let values = $(this).serialize();
 
       let posting = $.post('/races.json', values);
-debugger
+// debugger
       posting.done(function(data) {
         // TODO: handle response
         raceDiv = `<p>${data.name} - ${data.distance} - ${data.location} - ${data.event_date}</p>`
@@ -50,7 +49,7 @@ class Race {
         <input id='name' type='text' name='race[name]' placeholder="Race Name"></input><br>
         <input id='distance' type='text' name='race[distance]' placeholder="Distance"></input><br>
         <input id='location' type='text' name='race[location]' placeholder="Location"></input><br>
-        <input id='event_date' type='text' name='race[event_date]' placeholder="Date"></input><br>
+        <input id='event_date' type='date' name='race[event_date]' placeholder="Date"></input><br>
         <input type ='submit'/>
       </form>
     `)
