@@ -4,6 +4,7 @@ $(function () {
   console.log('races.js is loaded ...')
   listenForNewRaceClick()
   listenForNewRaceFormClick()
+  listenForViewRaceUsersClick()
 
 function listenForNewRaceClick() {
   $('button#new-race').on('click', function (e) {
@@ -32,6 +33,34 @@ debugger
       });
     });
   };
+
+function listenForViewRaceUsersClick() {
+  $('button#view-race-users').on('click', function(e) {
+    e.preventDefault()
+// debugger hits
+    $.ajax({
+      url: 'http://localhost:3000/races.json',
+      method: 'GET',
+      dataType: 'json',
+    }).done(function (data) {
+
+        let raceUsers = ""
+
+        data.forEach(race => {
+          debugger
+          race.users.forEach(
+            user => {
+              // debugger
+              raceUsers = `
+              <p>${user.name}</p>
+              `
+              $('#view-race-users-div').html(raceUsers);
+            }
+          )
+        })
+      })
+    })
+  }
 
 class Race {
   constructor(obj) {
