@@ -4,7 +4,6 @@ $(function () {
   console.log('races.js is loaded ...')
   listenForNewRaceClick()
   listenForNewRaceFormClick()
-  // listenForViewPrsClick()
 
 function listenForNewRaceClick() {
   $('button#new-race').on('click', function (e) {
@@ -12,7 +11,7 @@ function listenForNewRaceClick() {
 
     let newRaceForm = Race.newRaceForm()
 
-    document.querySelector('div#new-race-form').innerHTML = newRaceForm
+    document.querySelector('div#race-form').innerHTML = newRaceForm
     listenForNewRaceFormClick()
   })
 }
@@ -25,7 +24,7 @@ function listenForNewRaceFormClick() {
       let values = $(this).serialize();
 
       let posting = $.post('/races.json', values);
-// debugger
+debugger
       posting.done(function(data) {
         // TODO: handle response
         raceDiv = `<p>${data.name} - ${data.distance} - ${data.location} - ${data.event_date}</p>`

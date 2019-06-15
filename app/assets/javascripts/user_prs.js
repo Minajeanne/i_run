@@ -54,7 +54,7 @@ function listenForNewPrFormClick() {
       let values = $(this).serialize();
 
       let posting = $.post('/user_prs.json', values);
-
+debugger
       posting.done(function(data) {
         // TODO: handle response
         myDiv = `<p>${data.name} - ${data.description}</p>`
