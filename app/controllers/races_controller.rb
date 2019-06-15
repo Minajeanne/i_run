@@ -3,11 +3,20 @@ class RacesController < ApplicationController
   def index
     @user = current_user
     @races = current_user.races
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @races, status: 201}
+    end
   end
 
   def show
     @user = current_user
-    @races = current_user.races
+    # @races = current_user.races
+    @race = current_user.races.find_by(id: params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @race, status: 201}
+    end
   end
 
   def past_races
@@ -28,14 +37,20 @@ class RacesController < ApplicationController
 
   def edit
     @race = current_user.races.find_by(id: params[:id])
+    respond_to do |f|
+      f.html {render :edit}
+      f.json {render json: @pr, status: 201}
+    end
   end
 
   def create
     @race = current_user.races.build(race_params)
     if @race.save
       @race.users << current_user
-      # binding.pry
-      redirect_to races_path, notice: "Your race was saved!"
+      respond_to do |f|
+        f.html {redirect_to races_path, notice: "Your race was saved!"}
+        f.json {render json: @race, status: 201}
+      end
     else
       flash[:alert] = "Your race did not save. Please try again."
       render :new
