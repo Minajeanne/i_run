@@ -12,24 +12,25 @@ function listenForNewRaceClick() {
 
     let newRaceForm = Race.newRaceForm()
 
-    document.querySelector('div#pr-form').innerHTML = newPrForm
-    listenForNewPrFormClick()
+    document.querySelector('div#new-race-form').innerHTML = newRaceForm
+    // debugger
+    listenForNewRaceFormClick()
   })
 }
 
-function listenForNewPrFormClick() {
-    $('#new-pr-form').submit(function(e) {
+function listenForNewRaceFormClick() {
+    $('#new-race-form').submit(function(e) {
       //prevent form from submitting the default way
       e.preventDefault();
 
       let values = $(this).serialize();
 
-      let posting = $.post('/user_prs.json', values);
-
+      let posting = $.post('/races.json', values);
+debugger
       posting.done(function(data) {
         // TODO: handle response
-        myDiv = `<p>${data.name} - ${data.description}</p>`
-        $('#new-pr-div').html(myDiv);
+        raceDiv = `<p>${data.name} - ${data.distance} - ${data.location} - ${data.event_date}</p>`
+        $('#new-race-div').html(raceDiv);
       });
     });
   };
@@ -56,11 +57,13 @@ class Race {
   };
 }
 
-UserPr.prototype.prHTML = function () {
+Race.prototype.raceHTML = function () {
   return (`
     <div>
       <h2>$(this.name)</h2>
-      <p>$(this.description)</p>
+      <p>$(this.distance)</p>
+      <p>$(this.location)</p>
+      <p>$(this.event_date)</p>
     </div>
   `)
 };
