@@ -1,5 +1,10 @@
 {
   "name": "i_run",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "js-datepicker": "^4.0.10",
+    "popper.js": "^1.15.0"
+  }
 }

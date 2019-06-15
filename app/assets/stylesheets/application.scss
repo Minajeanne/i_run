@@ -21,6 +21,13 @@
     color: black;
   }
 
+button:hover,
+  :focus {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: black;
+    text-decoration: underline;
+  }
+
 a {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     color: black;
@@ -29,5 +36,4 @@ a {
 a:hover,
 a:focus {
     text-decoration: underline;
-    // box-shadow: -8px 10px 0px -7px white, 8px 10px 0px -7px white;
 }

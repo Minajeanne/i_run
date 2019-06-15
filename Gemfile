@@ -14,15 +14,18 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'omniauth-github'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'active_model_serializers'
+gem 'rack-cors'
 
 gem 'materialize-sass'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'coffee-script-source'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
