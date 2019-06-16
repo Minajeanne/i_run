@@ -26,8 +26,9 @@ function listenForViewPrsClick() {
         let myPrs = ""
 
         data.forEach(pr => {
-          myPrs += `
-          <p>${pr.name} - ${pr.description}</p>
+          myPrs +=
+          `
+            <p>${pr.name} - ${pr.description}</p>
           `
           $('#view-prs-div').html(myPrs);
         })
@@ -57,7 +58,10 @@ function listenForNewPrFormClick() {
 debugger
       posting.done(function(data) {
         // TODO: handle response
-        myDiv = `<p>${data.name} - ${data.description}</p>`
+        myDiv =
+        `
+          <p>${data.name} - ${data.description}</p>
+        `
         $('#new-pr-div').html(myDiv);
       });
     });
@@ -83,10 +87,7 @@ class UserPr {
 
 UserPr.prototype.prHTML = function () {
   return (`
-    <div>
-      <h2>$(this.name)</h2>
-      <p>$(this.description)</p>
-    </div>
+      <p>$(this.name) - $(this.description)</p>
   `)
 };
 
