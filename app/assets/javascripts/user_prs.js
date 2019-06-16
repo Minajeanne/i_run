@@ -87,7 +87,7 @@ class UserPr {
 
 UserPr.prototype.prHTML = function () {
   return (`
-      <p>$(this.name) - $(this.description)</p>
+      <p>${this.name} - ${this.description}</p>
   `)
 };
 
