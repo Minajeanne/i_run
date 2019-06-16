@@ -25,7 +25,7 @@ function listenForNewRaceFormClick() {
       let values = $(this).serialize();
 
       let posting = $.post('/races.json', values);
-debugger
+
       posting.done(function(data) {
         // TODO: handle response
         raceDiv = `<p>${data.name} - ${data.distance} - ${data.location} - ${data.event_date}</p>`
@@ -37,7 +37,7 @@ debugger
 function listenForViewRaceUsersClick() {
   $('button#view-race-users').on('click', function(e) {
     e.preventDefault()
-// debugger hits
+
     $.ajax({
       url: 'http://localhost:3000/races.json',
       method: 'GET',
@@ -47,10 +47,9 @@ function listenForViewRaceUsersClick() {
         let raceUsers = ""
 
         data.forEach(race => {
-          debugger
+
           race.users.forEach(
             user => {
-              // debugger
               raceUsers = `
               <p>${user.name}</p>
               `

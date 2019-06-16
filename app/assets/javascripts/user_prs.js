@@ -13,6 +13,7 @@ $(function () {
 //     getPrs();
 //   })
 // }
+let allUserPrs = []
 
 function listenForViewPrsClick() {
   $('#view-prs').on('click', function(e) {
@@ -25,12 +26,16 @@ function listenForViewPrsClick() {
     }).done(function (data) {
         let myPrs = ""
 
-        data.forEach(pr => {
-          myPrs += `
-          <p>${pr.name} - ${pr.description}</p>
-          `
-          $('#view-prs-div').html(myPrs);
-        })
+          allUserPrs = []
+
+            data.forEach(pr => {
+              let newUserPr = new UserPr(pr)
+                allUserPrs.push(newUserPr)
+            })
+      allUserPrs.forEach(pr => {
+        myPrs += pr.prHTML()
+      })
+      $('#view-prs-div').html(myPrs);
       })
     })
   }
@@ -54,18 +59,31 @@ function listenForNewPrFormClick() {
       let values = $(this).serialize();
 
       let posting = $.post('/user_prs.json', values);
-debugger
+
       posting.done(function(data) {
         // TODO: handle response
-        myDiv = `<p>${data.name} - ${data.description}</p>`
+        let newUserPr = new UserPr(data)
+
+          myDiv = newUserPr.prHTML()
+
         $('#new-pr-div').html(myDiv);
       });
     });
   };
 
+// create function to hide text on second click
+// function hideText() {
+//   var x = document.getElementById("view-prs");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+// }
+
 class UserPr {
   constructor(obj) {
-    this.id = obj.id
+    // this.id = obj.id
     this.name = obj.name
     this.description = obj.description
   }
@@ -83,10 +101,7 @@ class UserPr {
 
 UserPr.prototype.prHTML = function () {
   return (`
-    <div>
-      <h2>$(this.name)</h2>
-      <p>$(this.description)</p>
-    </div>
+      <p>${this.name} - ${this.description}</p>
   `)
 };
 

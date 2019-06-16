@@ -1,7 +1,7 @@
 class Race < ApplicationRecord
   has_many :stats
   has_many :users, through: :stats
-  validates :name, presence: true
+  validates :name, presence: true #, uniqueness: true
   validates :distance, presence: true
   validates :location, presence: true
   validates :event_date, presence: true
