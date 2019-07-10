@@ -1,5 +1,3 @@
-// Add second click functionality to hide NEW PR and PRS
-
 $(function () {
   console.log('user_prs.js is loaded ...')
   // listenForClick()
@@ -32,13 +30,25 @@ function listenForViewPrsClick() {
               let newUserPr = new UserPr(pr)
                 allUserPrs.push(newUserPr)
             })
-      allUserPrs.forEach(pr => {
-        myPrs += pr.prHTML()
-      })
-      $('#view-prs-div').html(myPrs);
-      })
-    })
+              let sortedPrs = allUserPrs.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
+              sortedPrs.forEach(pr => {
+                myPrs += pr.prHTML()
+              })
+              $('#view-prs-div').html(myPrs);
+            })
+          })
+        }
+
+// create function to hide text on second click
+function hideViewPrsText() {
+  var x = document.getElementById("#view-prs-div");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
   }
+}
 
 function listenForNewPrClick() {
   $('button#new-pr').on('click', function (e) {
@@ -71,14 +81,12 @@ function listenForNewPrFormClick() {
     });
   };
 
-// create function to hide text on second click
-// function hideText() {
-//   var x = document.getElementById("view-prs");
-//   if (x.style.display === "none") {
-//     x.style.display = "block";
-//   } else {
-//     x.style.display = "none";
-//   }
+// function clearViewPrsOnLinkClick() {
+//   let link = document.querySelector('#view-prs');
+//   let div = document.querySelector('button#view-prs-div');
+//     link.addEventListener('click', function(e) {
+//       div.innerHTML = ''
+//     });
 // }
 
 class UserPr {

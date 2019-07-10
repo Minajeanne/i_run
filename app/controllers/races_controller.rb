@@ -27,7 +27,14 @@ class RacesController < ApplicationController
     redirect_to my_past_races_path, notice: "Your race was successfully moved to Past Races!"
   end
 
-  def my_past_races
+  def my_past_races(past_races)
+    @race = current_user.races.find_by(id: params[:id])
+    @race.stats[0].completion = true
+    
+    respond_to do |f|
+      f.html {render my_past_races}
+      f.json {render json: @race, status: 201}
+    end
   end
 
   def new
